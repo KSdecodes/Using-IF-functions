@@ -1,0 +1,54 @@
+import javax.swing.JOptionPane;
+// This program designs the students academic performance.
+public class Main {
+    public static void main(String[] args) {
+
+        // Declare variables
+        String studentNo;
+        String firstName;
+        String lastName;
+        String email;
+        double finalMark;
+        double dpMark;
+
+        // Collect students data
+        studentNo = JOptionPane.showInputDialog("Enter student Number:");
+        firstName = JOptionPane.showInputDialog("Enter student First Name:");
+        lastName = JOptionPane.showInputDialog("Enter student Last Name:");
+        email = JOptionPane.showInputDialog("Enter student Email:");
+
+        short mark1 = Short.parseShort(JOptionPane.showInputDialog("Enter Mark 1:"));
+        short mark2 = Short.parseShort(JOptionPane.showInputDialog("Enter Mark 2:"));
+        short assignmentMark = Short.parseShort(JOptionPane.showInputDialog("Enter Assignment Mark:"));
+        short examMark = Short.parseShort(JOptionPane.showInputDialog("Enter Exam Mark:"));
+
+        // Perform calculations
+        dpMark = (double) (mark1 + mark2 + assignmentMark) / 3;
+        finalMark = (dpMark * 0.4) + (examMark * 0.6);
+
+        // Determines the Grade Status of the student
+        String status = "";
+        if (finalMark >= 0 && finalMark <= 46) {
+            status = "Failed";
+        } else if (finalMark >= 47 && finalMark <= 49) {
+            status = "Supplementary";
+        } else if (finalMark >= 50 && finalMark <= 74) {
+            status = "Passed";
+        } else if (finalMark >= 75 && finalMark <= 100) {
+            status = "Passed with Distinction";
+        }
+
+        // Displays a full report of the student.
+        String reportBody = "STUDENT REPORT\n" +
+                "----------------------------\n" +
+                "Student Number: " + studentNo + "\n" +
+                "Full Name: " + firstName + " " + lastName + "\n" +
+                "Email: " + email + "\n" +
+                "DP Mark: " + dpMark + "\n" +
+                "Final Mark: " + finalMark + "\n" +
+                "Status: " + status;
+
+        // Displays everything in one box
+        JOptionPane.showMessageDialog(null, reportBody);
+    }
+}
